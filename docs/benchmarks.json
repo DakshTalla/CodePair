@@ -1,0 +1,40 @@
+{
+  "measuredAt": "2026-11-16",
+  "machine": "Intel(R) Core(TM) Ultra 5 225H, 14 threads, Node v24.17.0, Docker Desktop (WSL2)",
+  "note": "Server, Redis and clients all on one laptop (localhost), so latency excludes real network delay.",
+  "latency": {
+    "samples": 1000,
+    "p50Ms": 0.16,
+    "p95Ms": 0.53,
+    "p99Ms": 1.14
+  },
+  "convergence": {
+    "clients": 5,
+    "totalEdits": 2000,
+    "converged": true,
+    "convergedMs": 453,
+    "recordedUpdates": 1970,
+    "avgBytesPerUpdate": 20.5,
+    "coldReloadMs": 19
+  },
+  "sandbox": {
+    "runs": 7,
+    "python": {
+      "medianMs": 515,
+      "minMs": 501
+    },
+    "javascript": {
+      "medianMs": 562,
+      "minMs": 531
+    },
+    "cpp": {
+      "medianMs": 767,
+      "minMs": 745
+    },
+    "infiniteLoop": {
+      "limitMs": 2000,
+      "status": "timeout",
+      "returnedAfterMs": 2453
+    }
+  }
+}
