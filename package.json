@@ -1,0 +1,16 @@
+{
+  "name": "codepair",
+  "private": true,
+  "description": "Real-time collaborative coding interview platform",
+  "scripts": {
+    "setup": "npm install --prefix server && npm install --prefix web",
+    "dev": "concurrently -n server,web -c magenta,cyan \"npm run dev --prefix server\" \"npm run dev --prefix web\"",
+    "test": "npm test --prefix server",
+    "typecheck": "npm run typecheck --prefix server && npm run typecheck --prefix web",
+    "bench": "npm run bench --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "playwright-core": "^1.65.1"
+  }
+}
