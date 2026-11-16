@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* Design tokens. Tailwind v4 turns each --color-x into classes such as
+   bg-x, text-x and border-x, so the whole palette is defined here once. */
+@theme {
+  --color-canvas: #0a0c10;      /* page background */
+  --color-panel: #0f1218;     /* side panels, console */
+  --color-raised: #161a22;    /* inputs, cards, hover */
+  --color-line: #222835;      /* borders */
+  --color-ink: #e7eaf0;       /* main text */
+  --color-muted: #8a93a6;     /* secondary text */
+  --color-faint: #5b6375;     /* hints, placeholders */
+  --color-accent: #8b7cff;    /* brand violet */
+  --color-accent-strong: #6d5cf0;
+  --color-ok: #3ecf8e;
+  --color-warn: #f5b84b;
+  --color-bad: #f2647a;
+
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "JetBrains Mono", Consolas, ui-monospace, monospace;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Thin dark scrollbars everywhere. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3140 transparent;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+/* Remote cursors in the editor. The per-user colour and name label are added
+   at run time by lib/yMonaco.ts; these are the shared shapes. */
+.rc-caret {
+  position: absolute;
+  height: 100%;
+  box-sizing: border-box;
+  border-left: 2px solid;
+}
+.rc-caret::after {
+  position: absolute;
+  top: -1.25em;
+  left: -2px;
+  padding: 0 5px;
+  border-radius: 4px 4px 4px 0;
+  font: 600 10px/1.5 var(--font-sans);
+  color: #0a0c10;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Replay: marks where the most recent keystroke happened. */
+.replay-caret {
+  position: absolute;
+  height: 100%;
+  border-left: 2px solid var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+/* The timeline scrubber. */
+input[type="range"].timeline {
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) var(--progress, 0%),
+    var(--color-line) var(--progress, 0%)
+  );
+  cursor: pointer;
+  outline: none;
+}
+/* Keyboard focus is shown on the thumb instead of a box around the track. */
+input[type="range"].timeline:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 70%, transparent);
+}
+input[type="range"].timeline::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 45%, transparent);
+}
