@@ -186,7 +186,7 @@ Rule: **anything in the Yjs document is visible to everyone** (it is sent to eve
 
 ### Root
 
-- **`start.ps1`**: one-command start. Checks Docker, runs `docker compose up -d` (Redis), builds the sandbox image if it is missing, installs npm packages on the first run, then runs `npm run dev`.
+- **`start.ps1`**: one-command start (`start.cmd` is a double-click wrapper that gets past the PowerShell script block). Starts Docker Desktop if needed, runs `docker compose up -d` (Redis), builds the sandbox image if it is missing, installs npm packages on the first run, then runs `npm run dev`.
 - **`package.json`**: `npm run dev` uses `concurrently` to run the server and web app side by side. Also `test`, `typecheck` and `bench`.
 - **`docker-compose.yml`**: only Redis, on `127.0.0.1:6380` (6379 is often taken; binding to 127.0.0.1 keeps it off the network), with append-only persistence.
 - **`sandbox/Dockerfile`**: Alpine plus python3, nodejs and g++, running as user 1000. No code is baked in.

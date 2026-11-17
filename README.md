@@ -16,13 +16,13 @@ A real-time collaborative coding interview platform. An interviewer opens a room
 
 ## Quick start (Windows)
 
-Prerequisites: Docker Desktop (running) and Node.js 20 or newer.
+Prerequisites: Docker Desktop and Node.js 20 or newer.
 
 ```powershell
 .\start.ps1
 ```
 
-Then open http://localhost:3100. The script starts Redis, builds the sandbox image and installs packages on the first run, then starts both apps.
+Then open http://localhost:3100. The script starts Docker Desktop if it is not running, starts Redis, builds the sandbox image and installs packages on the first run, then starts both apps. If PowerShell refuses to run scripts, double-click `start.cmd` instead.
 
 | Part | Address |
 |---|---|
@@ -140,7 +140,7 @@ web/                    Next.js + TypeScript + Tailwind frontend
 sandbox/Dockerfile      Alpine image with python3, node and g++
 scripts/screenshots.mjs two-browser end-to-end demo + screenshots
 docker-compose.yml      Redis
-start.ps1               one-command start
+start.ps1 / start.cmd   one-command start (start.cmd is the double-click version)
 docs/STUDY_GUIDE.md     design explanations and interview Q&A
 ```
 
